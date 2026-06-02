@@ -18,10 +18,24 @@ The workflow consists of three major stages:
 
 Reference mitochondrial protein-coding genes are obtained from publicly available mitochondrial genome assemblies and organized as species-specific FASTA files. Conserved loci shared among reference species are identified and used to construct amino acid and nucleotide reference databases required by Read2Tree. Unique species identifiers are assigned to all reference taxa to ensure accurate sequence reconstruction and output organization.
 
+Reference mitochondrial CDS should be organized as follows:
+
+```text
+Mito_CDS/
+├── Species_A/
+│   └── mt_all_cds/
+│       └── Species_A.fasta
+│
+└── Species_B/
+    └── mt_all_cds/
+        └── Species_B.fasta
+```
+
+Each FASTA file should contain all mitochondrial protein-coding genes (CDS) available for a given reference species.
+
 **Inputs**
 
-Reference mitochondrial CDS FASTA files
-Species identifier mapping file
+Reference mitochondrial CDS FASTA files from publicly available mitochondrial genome assemblies
 
 **Outputs**
 
@@ -34,9 +48,23 @@ Read2Tree reconstructs mitochondrial CDS directly from filtered paired-end seque
 
 **Inputs**
 
-Amino acid reference database
-Nucleotide reference database
+Amino acid reference database (ogs_aa)
+Nucleotide reference database (all_mt_cds.fasta)
 Filtered paired-end sequencing reads
+
+#### Sequencing Reads
+
+Filtered paired-end sequencing reads should be organized as:
+
+```text
+filtered_reads/
+├── filtered_Species_A_1.fastq.gz
+├── filtered_Species_A_2.fastq.gz
+├── filtered_Species_B_1.fastq.gz
+└── filtered_Species_B_2.fastq.gz
+```
+
+Each species should have its own pair of filtered read files generated after quality control and adapter trimming.
 
 **Outputs**
 

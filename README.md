@@ -87,14 +87,14 @@ Recovered mitochondrial CDS alignments can be trimmed and analyzed using maximum
 
 The workflow was developed and tested using the following software versions:
 
-Software	Version
-Read2Tree	2.0.1
-IQ-TREE	2.3.6
-trimAl	1.4.rev15
-SeqKit	2.5.0
-EMBOSS	6.6.0
-Python	3.10
-Biopython	≥1.80
+   Software	 Version
+- Read2Tree	2.0.1
+- IQ-TREE	2.3.6
+- trimAl	1.4.rev15
+- SeqKit	2.5.0
+- EMBOSS	6.6.0
+- Python	3.10
+- Biopython	≥1.80
 
 
 ## Repository Structure

@@ -1,57 +1,61 @@
-mtCDS-Read2Tree
+## mtCDS-Read2Tree
 
-Recovery of Mitochondrial Protein-Coding Genes from Short-Read Sequencing Data Using Read2Tree
-Overview
+## Recovery of Mitochondrial Protein-Coding Genes from Short-Read Sequencing Data Using Read2Tree
+
+## Overview
 
 Plant mitochondrial genomes are among the most structurally complex genomes in eukaryotes, often exhibiting extensive repeat-mediated recombination, structural rearrangements, multipartite conformations, and large genome sizes. These characteristics can complicate complete mitochondrial genome assembly, particularly when only short-read sequencing data are available.
 
-mtCDS-Read2Tree is a bioinformatic workflow developed to recover mitochondrial protein-coding genes (mt CDS) directly from short-read sequencing data without requiring complete mitochondrial genome assembly. The workflow utilizes conserved mitochondrial CDS references and Read2Tree to reconstruct orthologous mitochondrial loci suitable for downstream phylogenetic analyses.
+**mtCDS-Read2Tree** is a bioinformatic workflow developed to recover mitochondrial protein-coding genes (mt CDS) directly from short-read sequencing data without requiring complete mitochondrial genome assembly. The workflow utilizes conserved mitochondrial CDS references and Read2Tree to reconstruct orthologous mitochondrial loci suitable for downstream phylogenetic analyses.
 
 This workflow is particularly useful for mitochondrial phylogenomics, evolutionary studies, and comparative analyses of non-model plant species where complete mitochondrial genome assembly is challenging or unavailable.
 
-Workflow
+## Workflow
 
 The workflow consists of three major stages:
 
-1. Preparation of Reference Datasets
+**1. Preparation of Reference Datasets**
 
 Reference mitochondrial protein-coding genes are obtained from publicly available mitochondrial genome assemblies and organized as species-specific FASTA files. Conserved loci shared among reference species are identified and used to construct amino acid and nucleotide reference databases required by Read2Tree. Unique species identifiers are assigned to all reference taxa to ensure accurate sequence reconstruction and output organization.
 
-Inputs
+**Inputs**
 
 Reference mitochondrial CDS FASTA files
 Species identifier mapping file
 
-Outputs
+**Outputs**
 
 Amino acid orthologous group database (ogs_aa)
 Nucleotide reference database (all_mt_cds.fasta)
-2. Read2Tree Reconstruction
+
+**2. Read2Tree Reconstruction**
 
 Read2Tree reconstructs mitochondrial CDS directly from filtered paired-end sequencing reads using the prepared reference databases. This approach enables the recovery of phylogenetically informative mitochondrial loci without the need for complete mitochondrial genome assembly.
 
-Inputs
+**Inputs**
 
 Amino acid reference database
 Nucleotide reference database
 Filtered paired-end sequencing reads
 
-Outputs
+**Outputs**
 
 Recovered mitochondrial CDS
 Individual CDS alignments
 Concatenated mitochondrial CDS alignment
-3. Phylogenetic Analysis and Alignment Evaluation
+
+**3. Phylogenetic Analysis and Alignment Evaluation**
 
 Recovered mitochondrial CDS alignments can be trimmed and analyzed using maximum-likelihood phylogenetic approaches. Individual locus alignments may also be evaluated to assess sequence recovery success, alignment quality, taxon occupancy, and suitability for downstream phylogenetic inference.
 
-Outputs
+**Outputs**
 
 Trimmed concatenated alignment
 Maximum-likelihood phylogenetic tree
 Individual CDS alignments for quality assessment
 Locus-specific datasets for downstream analyses
-Software Requirements
+
+## Software Requirements
 
 The workflow was developed and tested using the following software versions:
 
@@ -65,7 +69,7 @@ Python	3.10
 Biopython	≥1.80
 
 
-Repository Structure
+## Repository Structure
 
 mtCDS-Read2Tree/
 │
@@ -73,11 +77,12 @@ mtCDS-Read2Tree/
 ├── LICENSE
 ├── scripts/
 
-Documentation
+
+## Documentation
 
 Detailed instructions for reference dataset preparation, Read2Tree reconstruction, phylogenetic analyses, and alignment evaluation are provided in the documentation files included in this repository.
 
 
-Citation
+## Citation
 
 A manuscript describing this workflow is currently in preparation. Citation information will be updated upon publication.

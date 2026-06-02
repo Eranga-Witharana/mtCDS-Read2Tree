@@ -39,8 +39,8 @@ Reference mitochondrial CDS FASTA files from publicly available mitochondrial ge
 
 **Outputs**
 
-Amino acid orthologous group database (ogs_aa)
-Nucleotide reference database (all_mt_cds.fasta)
+- Amino acid orthologous group database (ogs_aa)
+- Nucleotide reference database (all_mt_cds.fasta)
 
 **2. Read2Tree Reconstruction**
 
@@ -48,9 +48,9 @@ Read2Tree reconstructs mitochondrial CDS directly from filtered paired-end seque
 
 **Inputs**
 
-Amino acid reference database (ogs_aa)
-Nucleotide reference database (all_mt_cds.fasta)
-Filtered paired-end sequencing reads
+- Amino acid reference database (ogs_aa)
+- Nucleotide reference database (all_mt_cds.fasta)
+- Filtered paired-end sequencing reads
 
 #### Sequencing Reads
 
@@ -68,9 +68,9 @@ Each species should have its own pair of filtered read files generated after qua
 
 **Outputs**
 
-Recovered mitochondrial CDS
-Individual CDS alignments
-Concatenated mitochondrial CDS alignment
+- Recovered mitochondrial CDS
+- Individual CDS alignments
+- Concatenated mitochondrial CDS alignment
 
 **3. Phylogenetic Analysis and Alignment Evaluation**
 
@@ -78,10 +78,10 @@ Recovered mitochondrial CDS alignments can be trimmed and analyzed using maximum
 
 **Outputs**
 
-Trimmed concatenated alignment
-Maximum-likelihood phylogenetic tree
-Individual CDS alignments for quality assessment
-Locus-specific datasets for downstream analyses
+- Trimmed concatenated alignment
+- Maximum-likelihood phylogenetic tree
+- Individual CDS alignments for quality assessment
+- Locus-specific datasets for downstream analyses
 
 ## Software Requirements
 

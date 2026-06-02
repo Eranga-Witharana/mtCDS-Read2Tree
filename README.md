@@ -1,120 +1,83 @@
-# mtCDS-Read2Tree
+mtCDS-Read2Tree
 
-A workflow for recovering mitochondrial protein-coding genes (mt CDS) directly from short-read sequencing data using Read2Tree without requiring complete mitochondrial genome assembly.
+Recovery of Mitochondrial Protein-Coding Genes from Short-Read Sequencing Data Using Read2Tree
+Overview
 
-## Overview
+Plant mitochondrial genomes are among the most structurally complex genomes in eukaryotes, often exhibiting extensive repeat-mediated recombination, structural rearrangements, multipartite conformations, and large genome sizes. These characteristics can complicate complete mitochondrial genome assembly, particularly when only short-read sequencing data are available.
 
-Plant mitochondrial genomes are often difficult to assemble because of extensive structural rearrangements, repetitive regions, multipartite conformations, and large genome sizes. This workflow provides an alternative strategy for mitochondrial phylogenetic studies by directly reconstructing mitochondrial protein-coding genes from short-read sequencing data using Read2Tree.
+mtCDS-Read2Tree is a bioinformatic workflow developed to recover mitochondrial protein-coding genes (mt CDS) directly from short-read sequencing data without requiring complete mitochondrial genome assembly. The workflow utilizes conserved mitochondrial CDS references and Read2Tree to reconstruct orthologous mitochondrial loci suitable for downstream phylogenetic analyses.
 
-The workflow generates locus-specific and concatenated mitochondrial CDS datasets suitable for downstream phylogenetic analyses.
+This workflow is particularly useful for mitochondrial phylogenomics, evolutionary studies, and comparative analyses of non-model plant species where complete mitochondrial genome assembly is challenging or unavailable.
 
----
+Workflow
 
-## Workflow
+The workflow consists of three major stages:
 
-Reference mt CDS
-→ Gene extraction
-→ Conserved CDS selection
-→ Species ID assignment
-→ Amino acid and nucleotide database construction
-→ Read2Tree reconstruction
-→ Alignment trimming
-→ Phylogenetic inference
+1. Preparation of Reference Datasets
 
----
+Reference mitochondrial protein-coding genes are obtained from publicly available mitochondrial genome assemblies and organized as species-specific FASTA files. Conserved loci shared among reference species are identified and used to construct amino acid and nucleotide reference databases required by Read2Tree. Unique species identifiers are assigned to all reference taxa to ensure accurate sequence reconstruction and output organization.
 
-## Software Requirements
+Inputs
 
-| Software | Version |
-|-----------|-----------|
-| Read2Tree | 2.0.1 |
-| IQ-TREE | 2.3.6 |
-| trimAl | 1.4.rev15 |
-| SeqKit | 2.5.0 |
-| EMBOSS | 6.6.0 |
-| Python | 3.10 |
-| Biopython | ≥1.80 |
+Reference mitochondrial CDS FASTA files
+Species identifier mapping file
 
----
+Outputs
 
-## Repository Structure
+Amino acid orthologous group database (ogs_aa)
+Nucleotide reference database (all_mt_cds.fasta)
+2. Read2Tree Reconstruction
 
-```text
+Read2Tree reconstructs mitochondrial CDS directly from filtered paired-end sequencing reads using the prepared reference databases. This approach enables the recovery of phylogenetically informative mitochondrial loci without the need for complete mitochondrial genome assembly.
+
+Inputs
+
+Amino acid reference database
+Nucleotide reference database
+Filtered paired-end sequencing reads
+
+Outputs
+
+Recovered mitochondrial CDS
+Individual CDS alignments
+Concatenated mitochondrial CDS alignment
+3. Phylogenetic Analysis and Alignment Evaluation
+
+Recovered mitochondrial CDS alignments can be trimmed and analyzed using maximum-likelihood phylogenetic approaches. Individual locus alignments may also be evaluated to assess sequence recovery success, alignment quality, taxon occupancy, and suitability for downstream phylogenetic inference.
+
+Outputs
+
+Trimmed concatenated alignment
+Maximum-likelihood phylogenetic tree
+Individual CDS alignments for quality assessment
+Locus-specific datasets for downstream analyses
+Software Requirements
+
+The workflow was developed and tested using the following software versions:
+
+Software	Version
+Read2Tree	2.0.1
+IQ-TREE	2.3.6
+trimAl	1.4.rev15
+SeqKit	2.5.0
+EMBOSS	6.6.0
+Python	3.10
+Biopython	≥1.80
+
+
+Repository Structure
+
 mtCDS-Read2Tree/
 │
 ├── README.md
 ├── LICENSE
-├── environment.yml
-│
 ├── scripts/
-│   ├── split.py
-│   ├── occupancy.sh
-│   ├── ID.sh
-│   ├── check.sh
-│   ├── aa.sh
-│   ├── clean.sh
-│   ├── rename.sh
-│   ├── header.sh
-│   ├── trimal.sh
-│   └── without.sh
-│
-├── docs/
-│
-├── tutorial/
-│
-└── example_data/
-```
 
----
+Documentation
 
-## Input Data
+Detailed instructions for reference dataset preparation, Read2Tree reconstruction, phylogenetic analyses, and alignment evaluation are provided in the documentation files included in this repository.
 
-Reference mitochondrial CDS should be provided as FASTA files:
 
-```text
-Mito_CDS/
-├── Species_A/
-│   └── mt_all_cds/
-│       └── Species_A.fasta
-│
-└── Species_B/
-    └── mt_all_cds/
-        └── Species_B.fasta
-```
-
-Filtered sequencing reads should be stored separately:
-
-```text
-filtered_reads/
-├── filtered_Species_A_1.fastq.gz
-└── filtered_Species_B_2.fastq.gz
-```
-
----
-
-## Read2Tree Reconstruction
-
-The workflow uses conserved mitochondrial CDS references to reconstruct orthologous mitochondrial genes from raw sequencing reads.
-
-Outputs include:
-
-- Individual CDS alignments
-- Concatenated alignments
-- Phylogenetic datasets
-- Alignment evaluation files
-
----
-
-## Phylogenetic Analysis
-
-The concatenated alignment can be analyzed using IQ-TREE:
-
-```bash
-iqtree2 -s NewOutput.fasta -m MFP -bb 1000 -alrt 1000 -nt AUTO
-```
-
----
-
-## Citation
+Citation
 
 A manuscript describing this workflow is currently in preparation. Citation information will be updated upon publication.

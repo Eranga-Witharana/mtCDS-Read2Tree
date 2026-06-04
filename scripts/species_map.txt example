@@ -1,2 +1,11 @@
+# species_map.txt
+#
+# Purpose:
+#   Map reference species names to unique species IDs
+#   required by Read2Tree.
+#
+# Format:
+#   Species_Name    Unique_ID
+
 Brassica_oleracea    BROL
 Brassica_nigra       BRNI

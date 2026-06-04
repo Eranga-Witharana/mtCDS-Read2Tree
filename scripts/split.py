@@ -1,3 +1,30 @@
+# split.py
+#
+# Purpose:
+#   Split reference mitochondrial CDS FASTA files into gene-specific FASTA files.
+#   Gene names are extracted from FASTA header annotations ([gene=...]).
+#
+# Input:
+#   Species-specific mitochondrial CDS FASTA files:
+#
+#   Species_A/
+#   └── mt_all_cds/
+#       └── Species_A.fasta
+#
+#   Species_B/
+#   └── mt_all_cds/
+#       └── Species_B.fasta
+#
+# Output:
+#   gene_sets_raw/
+#   ├── atp1.fasta
+#   ├── cox1.fasta
+#   ├── nad4.fasta
+#   └── ...
+#
+# Usage:
+#   python split.py
+
 from Bio import SeqIO
 import re
 from collections import defaultdict

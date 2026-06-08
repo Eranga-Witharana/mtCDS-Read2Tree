@@ -83,6 +83,13 @@ Recovered mitochondrial CDS alignments can be trimmed and analyzed using maximum
 - Individual CDS alignments for quality assessment
 - Locus-specific datasets for downstream analyses
 
+## Applications
+
+The workflow is primarily designed for the recovery of mitochondrial protein-coding genes (mt CDS) directly from short-read sequencing data without requiring complete mitochondrial genome assembly. The recovered loci can be used for phylogenetic reconstruction, comparative genomics, and evolutionary studies.
+
+Although developed for mitochondrial CDS recovery, the same framework can be readily adapted to chloroplast protein-coding genes (cp CDS) by replacing the mitochondrial reference database with a chloroplast CDS reference set. This provides an alternative strategy for recovering phylogenetically informative chloroplast loci when complete chloroplast genome assembly is unsuccessful, fragmented, or unnecessary for downstream analyses.
+
+
 ## Software Requirements
 
 The workflow was developed and tested using the following software versions:
@@ -98,11 +105,30 @@ The workflow was developed and tested using the following software versions:
 
 ## Repository Structure
 
+```text
 mtCDS-Read2Tree/
 │
 ├── README.md
 ├── LICENSE
 ├── scripts/
+```
+
+## Scripts
+
+The `scripts/` directory contains utilities for reference dataset preparation, Read2Tree database construction, and downstream alignment processing.
+
+| Script         | Description                                                                        |
+| -------------- | ---------------------------------------------------------------------------------- |
+| `split.py`     | Split reference mitochondrial CDS FASTA files into gene-specific FASTA files.      |
+| `occupancy.sh` | Calculate gene occupancy across reference species.                                 |
+| `ID.sh`        | Replace species names with unique species identifiers required by Read2Tree.       |
+| `check.sh`     | Detect duplicate species identifiers in FASTA files.                               |
+| `aa.sh`        | Translate nucleotide CDS sequences into amino acid sequences using EMBOSS transeq. |
+| `clean.sh`     | Remove stop codons from translated amino acid sequences.                           |
+| `rename.sh`    | Rename translated FASTA files for downstream analyses.                             |
+| `header.sh`    | Modify FASTA headers for Read2Tree compatibility.                                  |
+| `trimal.sh`    | Trim alignments using trimAl.                                                      |
+| `without.sh`   | Remove reference taxa and retain reconstructed sequences only.                     |
 
 
 ## Documentation

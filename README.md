@@ -110,7 +110,23 @@ mtCDS-Read2Tree/
 │
 ├── README.md
 ├── LICENSE
+│
 ├── scripts/
+│   ├── split.py
+│   ├── occupancy.sh
+│   ├── ID.sh
+│   ├── check.sh
+│   ├── aa.sh
+│   ├── clean.sh
+│   ├── rename.sh
+│   ├── header.sh
+│   ├── trimal.sh
+│   └── without.sh
+│
+└── tutorial/
+    ├── 01_reference_preparation.md
+    ├── 02_read2tree.md
+    └── 03_phylogenetic_analysis.md
 ```
 
 ## Scripts
@@ -133,7 +149,11 @@ The `scripts/` directory contains utilities for reference dataset preparation, R
 
 ## Documentation
 
-Detailed instructions for reference dataset preparation, Read2Tree reconstruction, phylogenetic analyses, and alignment evaluation are provided in the documentation files included in this repository.
+| Tutorial | Description |
+|-----------|-------------|
+| [01_reference_preparation.md](tutorial/01_reference_preparation.md) | Preparation of reference mitochondrial CDS datasets and construction of Read2Tree reference databases. |
+| [02_read2tree.md](tutorial/02_read2tree.md) | Read2Tree installation, marker preparation, read mapping, and mitochondrial CDS reconstruction. |
+| [03_phylogenetic_analysis.md](tutorial/03_phylogenetic_analysis.md) | Alignment trimming, reference sequence removal, phylogenetic inference, and alignment evaluation. |
 
 
 ## Citation

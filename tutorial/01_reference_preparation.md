@@ -24,3 +24,6 @@ The following scripts are used:
 - ID.sh
 - check.sh
 - aa.sh
+- clean.sh
+- rename.sh
+- header.sh

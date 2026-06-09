@@ -156,6 +156,16 @@ The `scripts/` directory contains utilities for reference dataset preparation, R
 | [03_phylogenetic_analysis.md](tutorial/03_phylogenetic_analysis.md) | Alignment trimming, reference sequence removal, phylogenetic inference, and alignment evaluation. |
 
 
+## Downstream Phylogenetic Analyses
+
+Species tree reconstruction (ASTRAL) and gene tree discordance analyses (PhyParts) can be performed by following the corresponding tutorials in the companion **rt2-phylogenomics** repository:
+
+[https://github.com/<your-username>/rt2-phylogenomics](https://github.com/Eranga-Witharana/rt2-phylogenomics)
+
+The downstream analytical framework is the same, while this repository focuses specifically on the recovery and processing of mitochondrial CDS datasets.
+
+
+
 ## Citation
 
 A manuscript describing this workflow is currently in preparation. Citation information will be updated upon publication.

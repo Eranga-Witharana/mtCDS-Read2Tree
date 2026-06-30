@@ -30,63 +30,6 @@ seqkit version
 
 ---
 
-## Concatenated Alignment Processing
-
-Read2Tree generates a concatenated nucleotide alignment:
-
-```text
-concat_merge_dna.phy
-```
-
-### Alignment Trimming and Format Conversion
-
-The concatenated alignment is processed using trimAl to remove poorly aligned regions and convert the alignment to FASTA format.
-
-```bash
-trimal -in concat_merge_dna.phy -out Trimmed_dna.fasta -fasta -automated1
-```
-
-### Removal of Reference Sequences
-
-Remove all reference taxa and retain only reconstructed sequences recovered from the target samples.
-
-```bash
-seqkit grep -r -p "^filtered_" Trimmed_dna.fasta -o NewOutput.fasta
-```
-
-### Output
-
-```text
-NewOutput.fasta
-```
-
----
-
-## Maximum-Likelihood Phylogenetic Analysis
-
-The trimmed FASTA alignment can be used for maximum-likelihood phylogenetic inference using IQ-TREE.
-
-```bash
-iqtree2 -s NewOutput.fasta -m MFP -bb 1000 -alrt 1000 -nt AUTO
-```
-
-### Output Files
-
-```text
-concat_merge_dna.fasta.treefile
-concat_merge_dna.fasta.iqtree
-concat_merge_dna.fasta.log
-concat_merge_dna.fasta.contree
-```
-
-where:
-
-- `.treefile` contains the maximum-likelihood phylogeny.
-- `.iqtree` contains model selection results and tree statistics.
-- `.log` contains the analysis log.
-- `.contree` contains the consensus tree with branch support values and can be used for downstream tree visualization and figure preparation.
-
----
 
 ## Individual CDS Alignment Processing
 
@@ -123,6 +66,31 @@ filtered_OG0002.fasta
 ```
 
 ---
+## Concatenated Alignment Processing
+
+Individual trimmed and filtered CDS alignments can be concatenated using AMAS v1.0 for downstream phylogenetic analyses.
+
+### Concatenation Using AMAS
+
+After trimming all individual alignments and removing the reference sequences, concatenate the filtered alignments:
+
+```bash
+python AMAS.py concat -i filtered_OG00*.fasta -f fasta -d dna -u fasta -t concatenated_alignment.fasta -p partitions.txt
+```
+
+### Output
+
+```text
+concatenated_alignment.fasta
+partitions.txt
+```
+
+where:
+
+- `concatenated_alignment.fasta` is the concatenated nucleotide alignment.
+- `partitions.txt` contains the gene partition information for downstream phylogenetic analyses.
+
+---
 
 ## Alignment Evaluation and Downstream Applications
 
@@ -138,3 +106,5 @@ Alignment evaluation may include:
 - Gene tree congruence and discordance analyses
 
 The filtered alignments may also serve as input for downstream analyses, including gene tree inference, species tree reconstruction, and comparative phylogenomic studies. Detailed workflows for these analyses are provided in separate repositories.
+
+

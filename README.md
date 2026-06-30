@@ -70,15 +70,15 @@ Each species should have its own pair of filtered read files generated after qua
 
 - Recovered mitochondrial CDS
 - Individual CDS alignments
-- Concatenated mitochondrial CDS alignment
+
 
 **3. Phylogenetic Analysis and Alignment Evaluation**
 
-Recovered mitochondrial CDS alignments can be trimmed and analyzed using maximum-likelihood phylogenetic approaches. Individual locus alignments may also be evaluated to assess sequence recovery success, alignment quality, taxon occupancy, and suitability for downstream phylogenetic inference.
+Recovered mitochondrial CDS alignments can be trimmed and concatenated for downstream phylogenetic analyses. The concatenated alignment is used for maximum-likelihood phylogenetic inference, while individual locus alignments can be evaluated to assess sequence recovery success, alignment quality, taxon occupancy, and their suitability for downstream phylogenetic and comparative analyses.
 
 **Outputs**
 
-- Trimmed concatenated alignment
+- Trimmed and concatenated CDS alignment for phylogenetic analysis
 - Maximum-likelihood phylogenetic tree
 - Individual CDS alignments for quality assessment
 - Locus-specific datasets for downstream analyses
@@ -98,6 +98,7 @@ The workflow was developed and tested using the following software versions:
 - IQ-TREE	2.3.6
 - trimAl	1.4.rev15
 - SeqKit	2.5.0
+- AMAS 1.0
 - EMBOSS	6.6.0
 - Python	3.10
 - Biopython	≥1.80

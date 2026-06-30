@@ -11,11 +11,12 @@ The phylogenetic analyses described in this workflow were performed using the fo
 | IQ-TREE | 2.3.6 |
 | trimAl | 1.4.rev15 |
 | SeqKit | 2.5.0 |
+| AMAS | 1.0 |
 
 Install the required software using conda:
 
 ```bash
-conda create -n phylo iqtree=2.3.6 trimal=1.4.15 seqkit=2.5.0
+conda create -n phylo iqtree=2.3.6 trimal=1.4.15 seqkit=2.5.0 AMAS=1.0
 
 conda activate phylo
 ```
@@ -66,6 +67,27 @@ filtered_OG0002.fasta
 ```
 
 ---
+
+
+## Alignment Evaluation and Downstream Applications
+
+The resulting trimmed alignments can be used for alignment evaluation and downstream phylogenetic analyses.
+
+Alignment evaluation may include:
+
+- Sequence recovery success
+- Taxon occupancy
+- Alignment length
+- Missing data assessment
+- Phylogenetic informativeness
+- Gene tree congruence and discordance analyses
+
+The filtered alignments may also serve as input for downstream analyses, including gene tree inference, species tree reconstruction, and comparative phylogenomic studies. Detailed workflows for these analyses are provided in separate repositories.
+
+
+
+
+
 ## Concatenated Alignment Processing
 
 Individual trimmed and filtered CDS alignments can be concatenated using AMAS v1.0 for downstream phylogenetic analyses.
@@ -92,19 +114,29 @@ where:
 
 ---
 
-## Alignment Evaluation and Downstream Applications
+## Maximum-Likelihood Phylogenetic Analysis
 
-The resulting trimmed alignments can be used for alignment evaluation and downstream phylogenetic analyses.
+The concatenated alignment can be used for maximum-likelihood phylogenetic inference using IQ-TREE.
 
-Alignment evaluation may include:
+```bash
+iqtree2 -s concatenated_alignment.fasta -m MFP -bb 1000 -alrt 1000 -nt AUTO
+```
 
-- Sequence recovery success
-- Taxon occupancy
-- Alignment length
-- Missing data assessment
-- Phylogenetic informativeness
-- Gene tree congruence and discordance analyses
+### Output Files
 
-The filtered alignments may also serve as input for downstream analyses, including gene tree inference, species tree reconstruction, and comparative phylogenomic studies. Detailed workflows for these analyses are provided in separate repositories.
+```text
+concatenated_alignment.fasta.treefile
+concatenated_alignment.fasta.iqtree
+concatenated_alignment.fasta.log
+concatenated_alignment.fasta.contree
+```
+
+where:
+
+* `.treefile` contains the maximum-likelihood phylogeny.
+* `.iqtree` contains the selected substitution model and tree statistics.
+* `.log` contains the analysis log.
+* `.contree` contains the consensus tree with branch support values for downstream tree visualization and figure preparation.
+
 
 
